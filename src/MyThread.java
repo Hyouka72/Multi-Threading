@@ -1,6 +1,6 @@
-public class MyThread implements Runnable{
+public class MyThread extends Thread {
 
-    @Override
+
     public void run() {
         System.out.println("hello guys, thikxa tah");
     }
