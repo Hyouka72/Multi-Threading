@@ -1,7 +1,16 @@
-public class MyThread extends Thread {
+public class MyThread implements Runnable {
 
 
     public void run() {
-        System.out.println("hello guys, thikxa tah");
+        for (int i=0; i <= 10 ;i++){
+            System.out.println("hello guys, thikxa tah");
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 }
