@@ -1,18 +1,28 @@
 public class Main {
-    public static void main(String[] args) {
-        for (int i = 0; i <= 10; i++) {
-            Thread thread1 = new Thread(new MyThread());
-            Thread thread2 = new Thread(new MyThread());
+    public static void main(String[] args){
+        System.out.println("Program is starting...");
+        int x = 10+20;
+        System.out.println("sum = "+x);
+        Thread t =  Thread.currentThread();
+        String name = t.getName();
+        System.out.println("Thread name "+name);
 
-            thread1.start(); // start first thread
-
-            try {
-                Thread.sleep(1000); // wait 1 second before starting thread2
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            thread2.start(); // start second thread after delay
+        //setName
+        t.setName("mymain");
+        System.out.println(t.getName());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
+        System.out.println(t.threadId());
+        System.out.println("Program is ended...");
+
+        MyThread myThread = new MyThread();
+        Thread t2 = new Thread(myThread);
+        t2.start();
+        System.out.println("2nd Thread name"+t2.getName());
+        System.out.println("2nd Thread Id "+t2.threadId());
     }
+
 }
